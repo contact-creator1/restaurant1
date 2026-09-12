@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr" style="background:#F7F4EF;">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<meta name="supported-color-schemes" content="light">
+<title>[NOM DU RESTAURANT] — Bistrot</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --charbon:#1F1B1A;
+    --blanc-chaud:#F7F4EF;
+    --moutarde:#D9A441;
+    --rouille:#8C3B2E;
+  }
+  :root{color-scheme:light;}
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{background:#F7F4EF;}
+  body{background:var(--blanc-chaud) !important; color:var(--charbon) !important; font-family:'Source Serif 4',serif; line-height:1.6;}
+  @media (prefers-color-scheme: dark){
+    html{background:#F7F4EF !important;}
+    body{background:#F7F4EF !important; color:#1F1B1A !important;}
+  }
+  h1,h2,h3,.logo,.tag{font-family:'Barlow Condensed',sans-serif;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 32px;}
+
+  header{
+    background:var(--blanc-chaud); color:var(--charbon); padding:22px 32px;
+    display:flex; justify-content:space-between; align-items:center;
+    border-bottom:3px solid var(--charbon);
+  }
+  .logo{font-size:24px; font-weight:700; letter-spacing:.01em;}
+  nav a{margin-left:26px; font-size:15px; font-family:'Barlow Condensed',sans-serif; font-weight:500;}
+  nav a:hover{color:var(--rouille);}
+
+  .hero{
+    background:var(--blanc-chaud); color:var(--charbon);
+    padding:70px 32px 0; text-align:left; position:relative; overflow:hidden;
+  }
+  .hero .wrap{max-width:1080px; position:relative; z-index:1;}
+  .hero .tag{color:var(--rouille); font-size:16px; font-weight:600; margin-bottom:10px;}
+  .hero h1{
+    font-size:64px; font-weight:700; line-height:.98; max-width:760px;
+  }
+  .hero h1 .accent{color:var(--rouille);}
+  .hero p{font-family:'Source Serif 4',serif; font-size:17px; color:#4a453e; max-width:460px; margin:24px 0 34px;}
+  .btn{
+    display:inline-block; background:var(--charbon); color:var(--blanc-chaud);
+    padding:14px 28px; font-family:'Barlow Condensed',sans-serif; font-size:16px; font-weight:600;
+    transition:.2s; margin-bottom:60px;
+  }
+  .btn:hover{background:var(--rouille);}
+  .hero-band{height:16px; background:repeating-linear-gradient(90deg, var(--moutarde) 0 40px, var(--rouille) 40px 80px);}
+  .hero-deco{position:absolute; right:-40px; top:20px; width:340px; opacity:.9; z-index:0;}
+
+  /* bande info */
+  .infos{
+    background:var(--moutarde); color:var(--charbon); padding:16px 32px;
+    display:flex; justify-content:center; gap:50px; font-family:'Barlow Condensed',sans-serif;
+    font-size:16px; font-weight:600; flex-wrap:wrap;
+  }
+
+  /* menu format carte, avec pointillés */
+  .menu{padding:80px 32px 60px;}
+  .menu-head{text-align:left; margin-bottom:44px;}
+  .menu-head h2{font-size:38px; color:var(--rouille);}
+  .menu-head p{color:#6b645a; max-width:440px; margin-top:8px;}
+  .colonnes{display:grid; grid-template-columns:1fr 1fr; gap:0 60px;}
+  .item{display:flex; align-items:baseline; gap:8px; padding:14px 0; border-bottom:1px dotted #cfc7ba;}
+  .item .nom{font-family:'Barlow Condensed',sans-serif; font-weight:600; font-size:18px; white-space:nowrap;}
+  .item .fill{flex:1; border-bottom:1px dotted transparent; margin-bottom:5px;}
+  .item .prix{font-family:'Barlow Condensed',sans-serif; font-weight:700; color:var(--rouille); font-size:17px;}
+  .item .desc{display:block; width:100%; font-size:13.5px; color:#8a8377; font-family:'Source Serif 4',serif; margin-top:2px;}
+
+  /* section chef */
+  .chef{background:#EAE4D6; padding:70px 32px;}
+  .chef .wrap{display:grid; grid-template-columns:220px 1fr; gap:44px; align-items:center;}
+  .chef .photo{
+    aspect-ratio:1; background:var(--rouille); color:#f3ddd6; display:flex; align-items:center;
+    justify-content:center; text-align:center; font-size:12px; padding:14px;
+  }
+  .chef h2{font-size:30px; color:var(--charbon); margin-bottom:12px;}
+  .chef p{color:#5c564c; font-size:16px;}
+
+  footer{background:var(--blanc-chaud); color:var(--charbon); padding:60px 32px 24px; border-top:3px solid var(--charbon);}
+  footer .wrap{display:grid; grid-template-columns:1fr 1fr 1fr; gap:36px;}
+  footer h3{font-family:'Barlow Condensed',sans-serif; color:var(--rouille); font-size:18px; margin-bottom:12px; font-weight:600;}
+  footer p{font-size:14px; margin-bottom:5px; color:#4a453e;}
+  .copy{max-width:1080px; margin:34px auto 0; padding:18px 32px 0; border-top:1px solid #ddd5c6; font-size:13px; color:#8a8377;}
+
+  @media(max-width:760px){
+    header{flex-direction:column; gap:12px;}
+    .hero h1{font-size:38px;}
+    .colonnes{grid-template-columns:1fr;}
+    .chef .wrap{grid-template-columns:1fr;}
+    footer .wrap{grid-template-columns:1fr;}
+    .infos{gap:16px 30px;}
+  }
+</style>
+</head>
+<body style="background:#F7F4EF; color:#1F1B1A;">
+
+<header>
+  <div class="logo">[NOM DU RESTAURANT]</div>
+  <nav>
+    <a href="#menu">Carte</a>
+    <a href="#chef">L'équipe</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="tag">Bistrot de quartier — [Ville]</div>
+    <h1>Une cuisine <span class="accent">franche</span>, servie sans détour.</h1>
+    <p>[Une phrase sur l'esprit du lieu : produits de saison, ardoise qui change souvent, ambiance de quartier — à adapter.]</p>
+    <a href="#menu" class="btn">Voir la carte</a>
+  </div>
+  <svg class="hero-deco" viewBox="0 0 340 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M60 20 V110 M50 20 V70 Q50 90 60 90 Q70 90 70 70 V20" stroke="#8C3B2E" stroke-width="3" stroke-linecap="round" opacity=".5"/>
+    <path d="M60 110 V240" stroke="#8C3B2E" stroke-width="3" stroke-linecap="round" opacity=".5"/>
+    <path d="M200 20 C 230 20, 240 55, 210 75 C 195 85, 190 95, 190 110 V240" stroke="#D9A441" stroke-width="3" stroke-linecap="round" opacity=".55"/>
+    <circle cx="280" cy="150" r="34" stroke="#8C3B2E" stroke-width="2.5" opacity=".35"/>
+  </svg>
+  <div class="hero-band"></div>
+</section>
+
+<div class="infos">
+  <span>Ouvert du Mardi au Samedi</span>
+  <span>Réservation conseillée</span>
+  <span>[Téléphone]</span>
+</div>
+
+<section class="menu" id="menu">
+  <div class="menu-head">
+    <h2>La carte</h2>
+    <p>[Remplacer par les plats réels du bistrot — l'idée est un format "carte" simple, avec prix alignés.]</p>
+  </div>
+  <div class="colonnes">
+    <div>
+      <div class="item">
+        <span class="nom">[Plat 1]</span><span class="fill"></span><span class="prix">13€</span>
+        <span class="desc">[Description courte]</span>
+      </div>
+      <div class="item">
+        <span class="nom">[Plat 2]</span><span class="fill"></span><span class="prix">17€</span>
+        <span class="desc">[Description courte]</span>
+      </div>
+      <div class="item">
+        <span class="nom">[Plat 3]</span><span class="fill"></span><span class="prix">19€</span>
+        <span class="desc">[Description courte]</span>
+      </div>
+    </div>
+    <div>
+      <div class="item">
+        <span class="nom">[Plat 4]</span><span class="fill"></span><span class="prix">9€</span>
+        <span class="desc">[Description courte]</span>
+      </div>
+      <div class="item">
+        <span class="nom">[Plat 5]</span><span class="fill"></span><span class="prix">21€</span>
+        <span class="desc">[Description courte]</span>
+      </div>
+      <div class="item">
+        <span class="nom">[Plat 6]</span><span class="fill"></span><span class="prix">8€</span>
+        <span class="desc">[Description courte]</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="chef" id="chef">
+  <div class="wrap">
+    <div class="photo">[Photo du chef]</div>
+    <div>
+      <h2>Derrière les fourneaux</h2>
+      <p>[Deux ou trois phrases sur le chef ou l'équipe : parcours, philosophie de cuisine, ce qui les distingue.]</p>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div>
+      <h3>Adresse</h3>
+      <p>[Adresse complète]</p>
+      <p>[Ville, Code postal]</p>
+    </div>
+    <div>
+      <h3>Contact</h3>
+      <p>[Téléphone]</p>
+      <p>[Email]</p>
+    </div>
+    <div>
+      <h3>Horaires</h3>
+      <p>Mar–Sam : 12h–14h / 19h–22h30</p>
+      <p>Dim–Lun : Fermé</p>
+    </div>
+  </div>
+  <div class="copy">© [Année] [Nom du Restaurant]</div>
+</footer>
+
+</body>
+</html>
